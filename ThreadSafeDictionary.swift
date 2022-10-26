@@ -14,6 +14,7 @@ class ThreadSafeDictionary<V: Hashable,T>: Collection {
   var values: Dictionary<V, T>.Values { concurrentQueue.sync { dictionary.values } }
   var startIndex: Dictionary<V, T>.Index { concurrentQueue.sync { dictionary.startIndex } }
   var endIndex: Dictionary<V, T>.Index { concurrentQueue.sync { dictionary.endIndex } }
+  var dict: Dictionary<V, T> { concurrentQueue.sync { dictionary } }
 
   init(dict: [V: T] = [V:T]()) { dictionary = dict }
 
